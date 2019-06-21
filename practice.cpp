@@ -1,30 +1,98 @@
 #include <iostream>
 #include <cstring>
+#include <ctime>
 using namespace std;
 
-class practice {
+class Practice {
+   //accessible outside the class but within the program
    public:
+      // object variables and methods
       int timeInHours;
+      string listOfTopics[10];
+      int checkIf10000Hours (int value) {
+         if (value >= 10000)
+         {
+            return 1;
+         }
+         else {
+            return 0;
+         } 
+      }
+   // accesible only in this class
+   private:
+      //global variable is accessible throught the program
+      int var;
+      //static means global variable is restricted to the class where it is declared
+      static string globalVar;
+      void func();
+      void func2();
+      string name(string name2);
+      int add(int *num1, int *num2);
+      int multiply(int &num1, int &num2);
+      int modul(int calc);
+      void arrayModify(double value[], int value2);
 };
-   
+void func()
+{
+   // static local variable will keep it's value even after the method is run
+   static int maintain = 0;
+   maintain++;
+   cout << "the value from the method: " << maintain << endl;
+}
 
-//global variable is accessible throught the program
-int var = 0;
-//static means global variable is restricted to the class where it is declared 
-static string globalVar = "only in this class";
-void func();
-void func2();
-string name(string name2);
-int add(int *num1, int *num2);
-int multiply(int &num1, int &num2);
-int modul(int calc);
-void arrayModify(double value[], int value2);
+// local static variable maintains value even after run
+void func2()
+{
+   static string keepValue = "hello";
+   keepValue += "extra";
+   cout << "the value from the 2nd method: " << keepValue << endl;
+}
 
+// include a data type if you want to return a value, method variable needs a data type too
+// call by value means the value of the variable sent in cannot be changed only copied
+string name(string name2)
+{
+   return name2;
+}
+
+int modul(int calc)
+{
+   return calc = calc % 2;
+}
+
+// call by pointer allows you to use the memory address of the var and change the value
+// call by pointer method variables have a * symbol
+int add(int *num1, int *num2)
+{
+   *num1 += 2;
+   *num2 += 2;
+   return *num1;
+}
+
+// pass by reference allows you to use the memory address of he var and change the value
+// pass by reference only needs the & symbol on the method variable
+int multiply(int &num1, int &num2)
+{
+   num1 *= 2;
+   num2 *= 2;
+   return num2;
+}
+
+// pass one dimensional arrays but use an unsized array
+void arrayModify(double value[], int value2)
+{
+   for (int i = 0; i < value2; i++)
+   {
+      cout << value[i] << endl;
+   }
+}
 
 // main() is where program execution begins.
 // allows a comment to be made which is ignored by the complier 
 int main() {
    cout << "Hello World" << endl; // prints Hello World
+   // class object
+   Practice version1;
    // various operators
    int x = 1;
    int y = 2;
@@ -210,57 +278,31 @@ int main() {
    // prints out the memory address of a nullpointer 
    cout << nullPointer << endl;
 
+   string name3; 
+   
+   cout << "what is your name? ";
+
+   // used to input values in the terminal and store in a variable
+   //cin >> name3;
+
+   cout << "your name is: " << name3 << endl;
+
+   
+   version1.timeInHours = 1;
+   int log = version1.timeInHours;
+
+   cout << "I have been working for: " << log << " hours" << endl;
+
+   int log2 = version1.checkIf10000Hours(log);
+
+   if (log2 == 1){
+      cout << "you have reached 10,00 hours"<< endl;
+   } else if (log2 == 0) {
+      cout << "you have not reached 10,000 hours" << endl;
+   } else {
+      cout << "incorrect value";
+   }
+
    // common syntax to end the main method 
    return 0;
-}
-
-void func() {
-   // static local variable will keep it's value even after the method is run 
-   static int maintain = 0; 
-   maintain++; 
-   cout << "the value from the method: " << maintain << endl;
-   
-}
-
-// local static variable maintains value even after run 
-void func2() {
-   static string keepValue = "hello";
-   keepValue+= "extra";
-   cout << "the value from the 2nd method: " << keepValue << endl;
-
-}
-
-
-// include a data type if you want to return a value, method variable needs a data type too
-// call by value means the value of the variable sent in cannot be changed only copied
-string name( string name2) {
-   return name2;
-}
-
-int modul(int calc) {
-   return calc = calc%2;
-}
-
-// call by pointer allows you to use the memory address of the var and change the value 
-// call by pointer method variables have a * symbol 
-int add(int *num1, int *num2) {
-   *num1+=2;
-   *num2+=2;
-   return *num1;
-}
-
-// pass by reference allows you to use the memory address of he var and change the value
-// pass by reference only needs the & symbol on the method variable 
-int multiply(int &num1, int &num2) {
-   num1*=2;
-   num2*=2;
-   return num2;
-}
-
-// pass one dimensional arrays but use an unsized array 
-void arrayModify(double value [], int value2) {
-for (int i = 0; i < value2; i++) {
-   cout << value[i] << endl;
-   
-}
 }
