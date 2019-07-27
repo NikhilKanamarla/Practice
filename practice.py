@@ -16,6 +16,8 @@ class Practice:
         return 
 
     def calc(self, value):
+        #assert statment is like an if conditional 
+        assert (value != 0), "no value"
         value = value *2
         print (value)
         return value 
@@ -29,19 +31,39 @@ class Practice:
         print storage3
         print list4
         return 
+    
+    def calcValue(self,storage,storage2):
+        storage3 = storage + storage2
+        return storage3
+
 #inherited classed get all the methods 
 class Practice2(Practice):
-    def __init__(self, childVar):
+    def __init__(self, childVar, name):
         self.childVar = childVar
+        self.name = name 
     
     def child(self):
         print "calling child method"
     
     #override parent class methods by redefining in subclass
     def modify(self,value):
+        assert (len(value) > 0), "empty list"
         value.append([1,2])
         print value
-        return 
+        return
+
+class Practice3(Practice2):
+    def __init__(self, hour, SNS):
+        self.hour = hour
+        self.SNS = SNS
+    
+    def sendValue(self):
+        value = 0
+        #value = raw_input("send the value ")
+        print "here is the value ", value
+        return
+
+     
 
 # main method declaration
 if __name__ == '__main__':
@@ -61,6 +83,7 @@ if __name__ == '__main__':
     print list[0:4]
     #dictionary of values 
     dict = {"storage1": 100, "storage2": 200, "storage3": 300}
+    print "hello"
     print dict["storage1"]
     print dict.keys()
     print dict.values()
@@ -121,7 +144,7 @@ if __name__ == '__main__':
     list4 = ["a","b"]
     objectTry.multiValues(list4, storage3)
     #inheritance in python classes
-    object2 = Practice2("child")
+    object2 = Practice2("child","Rahul")
     object2.child()
     object2.calc(5)
     list5 = [1, 2, 3, 4, 5, 6, 7, 8]
@@ -137,6 +160,17 @@ if __name__ == '__main__':
         #z is iterating col variable and list 6[x] is the row of the list
         for z in range(len(list6[x])):
             print list6 [x] [z]
+    for x in range (len(list)):
+        print list[x]
+    for x in range(len(list2)):
+        for z in range(len(list2[x])):
+            print list2 [x] [z]
+    object3 = Practice(1,"review", "python")
+    object4 = Practice3(1, "instagram")
+    object4.sendValue()
+
+
+
     
 
 
