@@ -32,6 +32,17 @@ class Practice {
       int modul(int calc);
       void arrayModify(double value[], int value2);
 };
+
+class Practice2{
+   public:
+   int time;
+   string languages;
+   void test();
+   void recievePrint(string value);
+   int doCalc(int value);
+
+};
+
 void func()
 {
    // static local variable will keep it's value even after the method is run
@@ -87,9 +98,26 @@ void arrayModify(double value[], int value2)
    }
 }
 
+// calling method from class
+void test() {
+   cout << "the method works" << endl;
+}
+
+// calling method and sending value
+void recievePrint(string value) {
+   cout << value << " that's the value" << endl;
+}
+
+// calling method and modifying value
+int doCalc(int value){
+   int value2 = value*2+5/3%5;
+   return value2;
+}
+
 // main() is where program execution begins.
-// allows a comment to be made which is ignored by the complier 
-int main() {
+// allows a comment to be made which is ignored by the complier
+int main()
+{
    cout << "Hello World" << endl; // prints Hello World
    // class object
    Practice version1;
@@ -303,7 +331,14 @@ int main() {
       cout << "incorrect value";
    }
 
+   // commit files in github desktop app
    cout << "I am using github desktop" << endl;
+
+   Practice2 object2;
+
+   object2.time = 2;
+   cout << object2.time << endl;
+   object2.languages = "C++";
 
    // common syntax to end the main method 
    return 0;
