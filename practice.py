@@ -2,6 +2,8 @@
 import os
 import threading
 import sys
+import time
+import calendar
 
 #class declaration names should be capital
 class Practice:
@@ -168,6 +170,35 @@ if __name__ == '__main__':
     object3 = Practice(1,"review", "python")
     object4 = Practice3(1, "instagram")
     object4.sendValue()
+    # exceptions have a try block with the code and except block if the code doesn't work
+    # exeptions have an else block if it does work 
+    try:
+        for x in range(len(list)):
+            print list[x]
+    except ValueError:
+        print "there has been a value error"
+    except:
+        print "list cannot be printed"
+    else:
+        print "list was printed sucessfuly"
+    
+    #access object variables 
+    print object2.name
+
+    #Using the calendar module 
+    cal = calendar.month(2019, 6)
+    print cal 
+
+    #Using the time module 
+    #Use a comma to print multiple things 
+    localtime = time.asctime(time.localtime(time.time()))
+    print "Local current time :", localtime
+
+
+
+
+    
+
 
 
 
