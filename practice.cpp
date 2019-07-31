@@ -18,9 +18,6 @@ class Practice {
             return 0;
          } 
       }
-   // accesible only in this class
-   private:
-      //global variable is accessible throught the program
       int var;
       //static means global variable is restricted to the class where it is declared
       static string globalVar;
@@ -35,15 +32,45 @@ class Practice {
 
 class Practice2{
    public:
-   int time;
-   string languages;
-   void test();
-   void recievePrint(string value);
-   int doCalc(int value);
+      int time;
+      string languages;
+      void test();
+      void recievePrint(string value);
+      int doCalc(int value);
+      Practice2(int time1, string languages2);
+   // not acessible outside of class 
+   private:
+      string secret;
+      int age;
+   // not acessible outside of class but can be accessed through inheritance 
+   protected:
+      int inheritanceMoney;
+      int ageOfDeath;
 
 };
 
-void func()
+class Practice3: public Practice {
+   public: 
+      int cleaningHours;
+      bool workIsDone;
+      Practice3(int cleaningHours1, bool workIsDone1);
+
+};
+// end of a class declaration must have a semicolen 
+
+// class constructor defined with classname :: methodname(also classname)
+Practice2 :: Practice2(int time1, string languages2) {
+   int time = time1;
+   string languages = languages2;
+}
+
+Practice3 ::Practice3(int cleaningHours1, bool workIsDone1) {
+   int cleaningHours = cleaningHours1;
+   bool workIsDone = workIsDone1;
+}
+
+    // class resolution operator used to define a class function
+    void Practice ::func()
 {
    // static local variable will keep it's value even after the method is run
    static int maintain = 0;
@@ -52,7 +79,7 @@ void func()
 }
 
 // local static variable maintains value even after run
-void func2()
+void Practice :: func2()
 {
    static string keepValue = "hello";
    keepValue += "extra";
@@ -61,19 +88,19 @@ void func2()
 
 // include a data type if you want to return a value, method variable needs a data type too
 // call by value means the value of the variable sent in cannot be changed only copied
-string name(string name2)
+string Practice :: name(string name2)
 {
    return name2;
 }
 
-int modul(int calc)
+int Practice :: modul(int calc)
 {
    return calc = calc % 2;
 }
 
 // call by pointer allows you to use the memory address of the var and change the value
 // call by pointer method variables have a * symbol
-int add(int *num1, int *num2)
+int Practice :: add(int *num1, int *num2)
 {
    *num1 += 2;
    *num2 += 2;
@@ -82,7 +109,7 @@ int add(int *num1, int *num2)
 
 // pass by reference allows you to use the memory address of he var and change the value
 // pass by reference only needs the & symbol on the method variable
-int multiply(int &num1, int &num2)
+int Practice :: multiply(int &num1, int &num2)
 {
    num1 *= 2;
    num2 *= 2;
@@ -90,7 +117,7 @@ int multiply(int &num1, int &num2)
 }
 
 // pass one dimensional arrays but use an unsized array
-void arrayModify(double value[], int value2)
+void Practice :: arrayModify(double value[], int value2)
 {
    for (int i = 0; i < value2; i++)
    {
@@ -99,17 +126,17 @@ void arrayModify(double value[], int value2)
 }
 
 // calling method from class
-void test() {
+void Practice2 :: test() {
    cout << "the method works" << endl;
 }
 
 // calling method and sending value
-void recievePrint(string value) {
+void Practice2 :: recievePrint(string value) {
    cout << value << " that's the value" << endl;
 }
 
 // calling method and modifying value
-int doCalc(int value){
+int Practice2 :: doCalc(int value){
    int value2 = value*2+5/3%5;
    return value2;
 }
@@ -131,7 +158,7 @@ int main()
    int xd = rand();
    cout << xd << " that's a random value" << endl;
    bool known = true;
-   int storage2 = modul(calc);
+   int storage2 = version1.modul(calc);
    cout << "variable value: " << calc << endl;
    cout << "pass by value: " << storage2 << endl;
    const int finalVar = 10;
@@ -145,7 +172,7 @@ int main()
    cout << "modulus operator divides and gives remainder: " << x%y << endl;
    int condition = 10;
    for(int i =0; i < 10; i++) {
-         func2();
+         version1.func2();
       }
 
    
@@ -153,7 +180,7 @@ int main()
    // ! operator reverses the boolean condtion 
    while (!(condition <= 0)) {
       // calls the method 
-      func();
+      version1.func();
       condition--;
       // if conditonal runs once if condition is true
       if(condition == 0) {
@@ -214,20 +241,20 @@ int main()
    }
 
 
-   string storage = name(name2);
+   string storage = version1.name(name2);
    int num1 = 1;
    int num2 = 5;
    cout << "value of the first number: " << num1 <<endl;
    cout << "value of the second number: " << num2 << endl;
    // use & symbol to indicate that the method can change the value through call by pointer 
-   int num3 = add(&num1, &num2);
+   int num3 = version1.add(&num1, &num2);
    cout << "value of the first number: " << num1 <<endl;
    cout << "value of the second number: " << num2 << endl;
 
    cout << "value of the first number: " << num1 <<endl;
    cout << "value of the second number: " << num2 << endl;
    // use & symbol to indicate that the method can change the value through call by pointer 
-   int num4 = multiply(num1, num2);
+   int num4 = version1.multiply(num1, num2);
    cout << "value of the first number: " << num1 <<endl;
    cout << "value of the second number: " << num2 << endl;
 
@@ -283,7 +310,7 @@ int main()
       cout << endl;
    }
 
-   arrayModify(ipPartialAddress, amount2);
+   version1.arrayModify(ipPartialAddress, amount2);
    
    string word1 = "attack";
    string word2 = "cab";
@@ -334,11 +361,21 @@ int main()
    // commit files in github desktop app
    cout << "I am using github desktop" << endl;
 
-   Practice2 object2;
+   Practice2 object2(1,"C++");
 
    object2.time = 2;
    cout << object2.time << endl;
    object2.languages = "C++";
+   object2.recievePrint("hello world");
+   int storage3 = object2.doCalc(5);
+   cout << "computed value " << storage3 << endl; 
+
+   Practice3 object3(2,true);
+
+   cout << object3.cleaningHours << endl;
+
+   //using inherited methids
+   object3.checkIf10000Hours(100);
 
    // common syntax to end the main method 
    return 0;
