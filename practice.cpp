@@ -1,8 +1,10 @@
 #include <iostream>
 #include <cstring>
 #include <ctime>
+#include <iomanip>
 using namespace std;
 
+// class name has capital 
 class Practice {
    //accessible outside the class but within the program
    public:
@@ -28,6 +30,8 @@ class Practice {
       int multiply(int &num1, int &num2);
       int modul(int calc);
       void arrayModify(double value[], int value2);
+      
+      
 };
 
 class Practice2{
@@ -49,12 +53,13 @@ class Practice2{
 
 };
 
+//inherited class of practice with certain access level
 class Practice3: public Practice {
    public: 
       int cleaningHours;
       bool workIsDone;
-      Practice3(int cleaningHours1, bool workIsDone1);
-
+      Practice3(int cleaningHours1, bool workIsDone1) ;
+      
 };
 // end of a class declaration must have a semicolen 
 
@@ -64,13 +69,16 @@ Practice2 :: Practice2(int time1, string languages2) {
    string languages = languages2;
 }
 
-Practice3 ::Practice3(int cleaningHours1, bool workIsDone1) {
+
+Practice3 :: Practice3(int cleaningHours1, bool workIsDone1) {
    int cleaningHours = cleaningHours1;
    bool workIsDone = workIsDone1;
+   
 }
 
-    // class resolution operator used to define a class function
-    void Practice ::func()
+// class resolution operator used to define a class function
+// return type class name :: method name()
+void Practice ::func()
 {
    // static local variable will keep it's value even after the method is run
    static int maintain = 0;
@@ -276,7 +284,7 @@ int main()
    string blankSlate [] = {"whiteboard", "blackboard", "marker"};
 
    //declare an array with a set number of elements 
-   double ipPartialAddress [] = {184.30, 37.180, 210.76};
+   double ipPartialAddress [3] = {184.30, 37.180, 210.76};
 
    // used to find the size of an array, number of bytes of entire array divided by bytes in a single index 
    int amount = sizeof(blankSlate)/sizeof(blankSlate[0]);
@@ -374,8 +382,25 @@ int main()
 
    cout << object3.cleaningHours << endl;
 
-   //using inherited methids
+   //using inherited methods
    object3.checkIf10000Hours(100);
+
+   object3.var = 5;
+
+   int stored = object3.var;
+
+   cout << stored << endl;
+
+   string two2d [4] [4]= {{"Hello","World","this", "Nikhil"},{"I", "am", "tired", "generally"},{"why", "review", "c++","?"}, {"because", "I", "have" ,"to"}};
+   int stores2d = sizeof(two2d)/sizeof(two2d[0][0]);
+   cout << stores2d << endl;
+
+   for(int i =0; i < stores2d/4; i++) {
+      for(int x =0; x < stores2d/4; x++) {
+         cout << two2d[i][x];
+      }
+      cout << endl;
+   }
 
    // common syntax to end the main method 
    return 0;
