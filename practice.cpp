@@ -41,8 +41,11 @@ class Practice2{
       void test();
       void recievePrint(string value);
       int doCalc(int value);
+      string getSecret();
+      void setSecret(string secre);
       Practice2(int time1, string languages2);
    // not acessible outside of class 
+   // usually keep varibles private and use public method getters and setters
    private:
       string secret;
       int age;
@@ -62,6 +65,19 @@ class Practice3: public Practice {
       
 };
 // end of a class declaration must have a semicolen 
+
+//practicing data hiding 
+class Practice4 {
+   private: 
+   int phoneNumber;
+   string address;
+
+   public:
+   void setPhoneNumber(int num);
+   int getPhoneNumber();
+   void setAddress(string ad);
+   string getAddress();
+};
 
 // class constructor defined with classname :: methodname(also classname)
 Practice2 :: Practice2(int time1, string languages2) {
@@ -143,10 +159,35 @@ void Practice2 :: recievePrint(string value) {
    cout << value << " that's the value" << endl;
 }
 
+// giving class variables values outside the constructor
+void Practice2 :: setSecret(string secre) {
+secret = secre;
+}
+
+string Practice2 :: getSecret() {
+return secret;
+}
+
 // calling method and modifying value
 int Practice2 :: doCalc(int value){
    int value2 = value*2+5/3%5;
    return value2;
+}
+
+void Practice4 :: setPhoneNumber(int num) {
+   phoneNumber = num;
+} 
+
+int Practice4 :: getPhoneNumber() {
+   return phoneNumber;
+}
+
+void Practice4 :: setAddress(string ad) {
+   address = ad;
+}
+
+string Practice4 :: getAddress() {
+   return address;
 }
 
 // main() is where program execution begins.
@@ -341,15 +382,6 @@ int main()
    // prints out the memory address of a nullpointer 
    cout << nullPointer << endl;
 
-   string name3; 
-   
-   cout << "what is your name? ";
-
-   // used to input values in the terminal and store in a variable
-   //cin >> name3;
-
-   cout << "your name is: " << name3 << endl;
-
    
    version1.timeInHours = 1;
    int log = version1.timeInHours;
@@ -377,6 +409,10 @@ int main()
    object2.recievePrint("hello world");
    int storage3 = object2.doCalc(5);
    cout << "computed value " << storage3 << endl; 
+   object2.setSecret("I don't like hot weather");
+   string exportedValue =object2.getSecret();
+
+   cout << "using a getter and setter " << exportedValue << endl;
 
    Practice3 object3(2,true);
 
@@ -402,6 +438,27 @@ int main()
       cout << endl;
    }
 
+   string name3;
+
+   cout << "what is your name? ";
+
+   //used to input values in the terminal and store in a variable
+   // run in terminal with g++ -o output name 
+   // run in terminal with ./output 
+   //cin >> name3;
+
+   cout << "your name is: " << name3 << endl;
+
+   Practice4 object4;
+
+   object4.setPhoneNumber(6351013);
+   int printNum = object4.getPhoneNumber();
+   cout << "Here is the phone number " << printNum << endl;
+
+   object4.setAddress("Hockessin DE");
+   string tempPrint = object4.getAddress();
+
+   cout << "Here is the address " <<  tempPrint << endl;
    // common syntax to end the main method 
    return 0;
 }
