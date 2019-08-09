@@ -457,8 +457,23 @@ int main()
 
    object4.setAddress("Hockessin DE");
    string tempPrint = object4.getAddress();
+   cout << "Here is the address " << tempPrint << endl;
 
-   cout << "Here is the address " <<  tempPrint << endl;
+   //pointers in c++
+   int dateOfBirth = 12262000;
+   cout << "memory address can be accessed using & symbol " << &dateOfBirth << endl;
+   //pointers are variables that store memory address of another variable 
+   int *pointer1;
+   pointer1 = &dateOfBirth; 
+   //print out memory address by printing out pointer
+   cout << pointer1 << endl;
+   //print out value of pointer of memory address using *
+   cout << *pointer1 << endl;
+   //pointer variable and regular variable must be same type
+   double age = 18.6;
+   double *pointer2;
+   pointer2 = &age;
+   
    // common syntax to end the main method 
    return 0;
 }
