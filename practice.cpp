@@ -474,6 +474,22 @@ int main()
    double *pointer2;
    pointer2 = &age;
    
+   // light review of arrays and for loops
+   int num [10] = {1,2,3,4,5,6,7,8,9};
+   int sizeNum = sizeof(num)/sizeof(num[0]);
+   int numx3 [10] [10] = {{1,2,3,4,5,6,7,8,9}, {11,21,31,41,51,61,71,81,91}};
+   int sizeNumx3 = sizeof(numx3)/sizeof(numx3[0]);
+   cout << sizeNumx3 << endl;
+   for(int i =0; i < sizeNum; i ++) {
+      cout << num[i] << endl;
+   }
+   for(int i =0; i <sizeNumx3; i++) {
+      for(int x =0; x < sizeNumx3; x++) {
+         cout << numx3[i][x];
+      }
+      cout << endl;
+   }
+
    // common syntax to end the main method 
    return 0;
 }
