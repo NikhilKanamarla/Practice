@@ -15,7 +15,7 @@ class Practice:
     #all methods must have self variable 
     def printName(self,str):
         print(str)
-        return 
+        
 
     def calc(self, value):
         #assert statment is like an if conditional 
@@ -27,12 +27,12 @@ class Practice:
     def modify(self, value):
         value.append([2,3,4,5,6,7,8,9])
         print value
-        return 
+        
 
     def multiValues(self,storage3,list4):
         print storage3
         print list4
-        return 
+        
     
     def calcValue(self,storage,storage2):
         storage3 = storage + storage2
@@ -52,7 +52,7 @@ class Practice2(Practice):
         assert (len(value) > 0), "empty list"
         value.append([1,2])
         print value
-        return
+        
 
 class Practice3(Practice2):
     def __init__(self, hour, SNS):
@@ -63,9 +63,28 @@ class Practice3(Practice2):
         value = 0
         #value = raw_input("send the value ")
         print "here is the value ", value
-        return
+        
 
-     
+class Practice4:
+    destination = " "
+    missionSuccess = True
+    
+    def __init__(self,year,height,name):
+        self.year = year
+        self.height = height
+        self.name = name
+    
+    def setDestination(self, destination1):
+        Practice4.destination = destination1
+
+    def getDestination(self):
+        return Practice4.destination
+    
+    def setMissonOutcome(self, value):
+        Practice4.missionSuccess = value
+    
+    def getMissionOutcome(self):
+        return Practice4.missionSuccess
 
 # main method declaration
 if __name__ == '__main__':
