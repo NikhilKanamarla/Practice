@@ -212,16 +212,15 @@ if __name__ == '__main__':
     #Use a comma to print multiple things 
     localtime = time.asctime(time.localtime(time.time()))
     print "Local current time :", localtime
-
-
-
-
-    
-
-
-
-
-    
-
-
-    
+    object5 = Practice4(1969,10000,"Saturn V")
+    object5.setDestination("Moon")
+    details = [0,0]
+    details [0] = object5.getDestination()
+    object5.setMissonOutcome(True)
+    details[1] = object5.getMissionOutcome()
+    for x in range(len(details)):
+        print details[x]
+    listReview = [["Hello", "World", "My", "Name", "Is"],[0,1,0,0,1,0,0]]
+    for x in range(len(listReview)):
+        for z in range(len(listReview [x])):
+            print(listReview[x][z])
