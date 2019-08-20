@@ -224,3 +224,6 @@ if __name__ == '__main__':
     for x in range(len(listReview)):
         for z in range(len(listReview [x])):
             print(listReview[x][z])
+    linkList = ["value","storage", "generic variable names"]
+    for x in range(len(linkList)):
+        print linkList[x]
