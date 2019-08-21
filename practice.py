@@ -38,7 +38,7 @@ class Practice:
         storage3 = storage + storage2
         return storage3
 
-#inherited classed get all the methods 
+#inherited classed get all the methods and variables
 class Practice2(Practice):
     def __init__(self, childVar, name):
         self.childVar = childVar
@@ -69,6 +69,7 @@ class Practice4:
     destination = " "
     missionSuccess = True
     
+    #constructor variables are intialized when object is created
     def __init__(self,year,height,name):
         self.year = year
         self.height = height
@@ -85,10 +86,34 @@ class Practice4:
     
     def getMissionOutcome(self):
         return Practice4.missionSuccess
+    
+    def calcTrajectory(self, altitude, velocity, acceleration):
+        #comma allows you to print mulitple things 
+        print("current altitude is ", altitude)
+        return acceleration * velocity 
+
+class Practice5(Practice4):
+    cost = 0
+    missionCheap = True
+    listOfItems = ["TBD"]
+
+    def SetMaterialsList(self, list):
+        #to access class variables use class name
+        Practice5.listOfItems = list
+    
+    def getMaterialsList(self):
+        return Practice5.listOfItems
+    
+    def SetMissionCost(self,cost1):
+        cost = cost1
+        if(cost <= 100000000):
+            missionCheap = True
+        print missionCheap
+    
 
 # main method declaration
 if __name__ == '__main__':
-    print "hello world"
+    print("hello world")
     # variable declaration
     name = "Nikhil"
     age = 18
@@ -108,9 +133,9 @@ if __name__ == '__main__':
     print dict["storage1"]
     print dict.keys()
     print dict.values()
-    if (list[0] == "Hello"):
+    if (list[0] != "Hello"):
         print "list has been modified"
-    elif (list[0]== "hello"):
+    elif (list[1] == "hello"):
         print "list has been modified"
     else: 
         print "list has not been modified"
@@ -157,7 +182,7 @@ if __name__ == '__main__':
     #returning variable will you to keep the changes made in the method 
     storage2 = objectTry.calc(5)
     print storage2
-    #Python methods are pass by reference if appending methods
+    #Python methods are pass by reference if appending lists
     list3 = [1,2,3,4,5,6,7,8]
     objectTry.modify(list3)
     print list3
@@ -192,7 +217,7 @@ if __name__ == '__main__':
     # exceptions have a try block with the code and except block if the code doesn't work
     # exeptions have an else block if it does work 
     try:
-        for x in range(len(list)):
+        for x in list:
             print list[x]
     except ValueError:
         print "there has been a value error"
@@ -227,3 +252,11 @@ if __name__ == '__main__':
     linkList = ["value","storage", "generic variable names"]
     for x in range(len(linkList)):
         print linkList[x]
+    nextStep = object5.calcTrajectory(100,1000,500)
+    print nextStep
+
+    #if a sublcass doesn't have a constructor than it uses the one from the parent class
+    testingObject = Practice5(2023, 1000, "Artemis")
+    testingObject.SetMissionCost(10000)
+    testingObject.SetMaterialsList(["silver", "fuel","aluminum", "pumps", "oxidizer","nozzle"])
+    
