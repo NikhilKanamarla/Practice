@@ -12,16 +12,15 @@ class Practice:
         self.timeSpent = timeSpent
         self.concepts = concepts
         self.langauge = langauge
+    
     #all methods must have self variable 
     def printName(self,str):
         print(str)
         
-
     def calc(self, value):
         #assert statment is like an if conditional 
         assert (value != 0), "no value"
         value = value *2
-        print (value)
         return value 
 
     def modify(self, value):
@@ -91,6 +90,15 @@ class Practice4:
         #comma allows you to print mulitple things 
         print("current altitude is ", altitude)
         return acceleration * velocity 
+    
+    #use the self keyword when calling the method within the method
+    def recursion(self, inputNum, endNum):
+        # Base case
+        if (inputNum == 10):
+            return endNum
+        #recursive case
+        else:
+            return self.recursion(inputNum+1, endNum+inputNum)
 
 class Practice5(Practice4):
     cost = 0
@@ -109,6 +117,12 @@ class Practice5(Practice4):
         if(cost <= 100000000):
             missionCheap = True
         print missionCheap
+    
+    def recursion2(self,inputNum,endNum):
+        if (inputNum == 0):
+            return endNum
+        else: 
+            return self.recursion2(inputNum-1,endNum+inputNum)
     
 
 # main method declaration
@@ -259,4 +273,9 @@ if __name__ == '__main__':
     testingObject = Practice5(2023, 1000, "Artemis")
     testingObject.SetMissionCost(10000)
     testingObject.SetMaterialsList(["silver", "fuel","aluminum", "pumps", "oxidizer","nozzle"])
+    # calling a recursive method
+    storeNumRecur = object5.recursion(0,0)
+    print(storeNumRecur)
+    storeNumRecur2 = testingObject.recursion2(10,0)
+    print(storeNumRecur2)
     
