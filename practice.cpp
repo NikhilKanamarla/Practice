@@ -2,6 +2,7 @@
 #include <cstring>
 #include <ctime>
 #include <iomanip>
+#include <vector>
 using namespace std;
 
 // class name has capital 
@@ -111,7 +112,7 @@ void Practice :: func2()
 }
 
 // include a data type if you want to return a value, method variable needs a data type too
-// call by value means the value of the variable sent in cannot be changed only copied
+// pass by value means the value of the variable sent in cannot be changed only copied
 string Practice :: name(string name2)
 {
    return name2;
@@ -122,8 +123,8 @@ int Practice :: modul(int calc)
    return calc = calc % 2;
 }
 
-// call by pointer allows you to use the memory address of the var and change the value
-// call by pointer method variables have a * symbol
+// pass by pointer allows you to use the memory address of the var and change the value
+// pass by pointer method variables have a * symbol
 int Practice :: add(int *num1, int *num2)
 {
    *num1 += 2;
@@ -489,6 +490,18 @@ int main()
       }
       cout << endl;
    }
+
+   //create an arraylist
+   vector<int> betterArray;
+   //put the value 6, 5 times into arraylist
+   betterArray.assign(5,6);
+   //remove last value
+   betterArray.pop_back();
+
+   for(int i =0; i < betterArray.size(); i++) {
+      cout << betterArray[i];
+   }
+   cout << endl;
 
    // common syntax to end the main method 
    return 0;

@@ -20,7 +20,7 @@ class Practice:
     def calc(self, value):
         #assert statment is like an if conditional 
         assert (value != 0), "no value"
-        value = value *2
+        value = value * 2
         return value 
 
     def modify(self, value):
