@@ -23,5 +23,23 @@ for index in buildingNames {
     print (index)
 }
 
+class eecs183 {
+    // declare variable and include type
+    var numMeet: Int
+    var grade: Int
+    init(numMeet: Int, grade: Int) {
+        self.numMeet = numMeet
+        self.grade = grade
+    }
+    func setGrade(grade1:Int) {
+        grade = grade1
+    }
+    // -> type indicates return type
+    func getGrade() -> Int {
+        return grade
+    }
+}
+
+
 
 
