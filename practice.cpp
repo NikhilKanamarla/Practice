@@ -503,6 +503,30 @@ int main()
    }
    cout << endl;
 
+   string name = "Nikhil";
+   Practice4 object6;
+   object6.setAddress("West Quad");
+   object6.setPhoneNumber(302);
+   int phone = object6.getPhoneNumber();
+   string addressxd = object6.getAddress();
+   cout << phone << " " << addressxd << endl;
+
+   int arrayNum [10] = {1,2,3,4,46,78,4,6,7,8,};
+   int storeNumXD = sizeof(arrayNum) / sizeof(arrayNum[0]);
+   for(int i = 0; i < storeNumXD ; i++) {
+      if(arrayNum[i] > 10) {
+         cout << "too large" << endl;
+      }
+   }
+
+   // quick review of basic pointers 
+   int *storePhone = &phone;
+   cout << storePhone << endl;
+   cout << *storePhone << endl;
+
+   string const name4 = "Jill";
+
+
    // common syntax to end the main method 
    return 0;
 }
