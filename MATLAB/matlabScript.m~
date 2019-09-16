@@ -19,4 +19,4 @@ x1 = 2;
 x1 = x1 * 5;
 x2 = 3;
 x3 = hello2Function(x1,x2);
-disp(x3);
+disp(x3)
